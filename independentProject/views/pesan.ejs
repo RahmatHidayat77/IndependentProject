@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>TiketKonser.com</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMgzaDh8DjtzHlnBCPwC-jbtE5ZWfmVFR9AdsUl_GHqd-YPUcW">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+
+    .row.content {
+      height: 565px
+    }
+
+    /* Set gray background color and 100% height */
+
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {
+        height: auto;
+      }
+    }
+
+    /*modal*/
+
+    .modal-header,
+    h4,
+    .close {
+      background-color: #509dc9;
+      color: white !important;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .modal-footer {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="./">TiketKonser.com</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="./">Home</a>
+          </li>
+          <li>
+            <a href="./tentang">Tentang</a>
+          </li>
+          <li class="active">
+            <a href="./jadwalkonser">Jadwal Konser</a>
+          </li>
+          <li>
+            <a href="./kontakadmin">Kontak Admin</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <% if (loginIn){ %>
+
+              <%} else {%>
+                <a href="../register">
+                  <span class="glyphicon glyphicon-user"></span> Register</a>
+                <%}%>
+          </li>
+          <li>
+            <% if (loginIn) { %>
+              <a href="../logout">
+                <span class="glyphicon glyphicon-log-in"></span> Logout</a>
+              <% } else { %>
+                <a href="./login">
+                  <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                <% } %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid text-center">
+    <div class="row content">
+      <div class="col-sm-2 sidenav">
+        <p>
+          <a href="#">Link</a>
+        </p>
+        <p>
+          <a href="#">Link</a>
+        </p>
+        <p>
+          <a href="#">Link</a>
+        </p>
+      </div>
+      <div class="col-sm-8 text-left">
+        <h1>Pemesanan</h1>
+        <!--h1>Login :</h1>
+        <h1>
+          <%=loginIn%>
+        </h1-->
+        <hr>
+        <div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Tiket Class</th>
+                <th>Harga</th>
+                <th>Tiket Tersisa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Platinum</td>
+                <td id="hargaPlatinum">
+                  <%= JSON.parse(JSON.stringify(data)).platinum.harga %>
+                </td>
+                <td>
+                  <%= JSON.parse(JSON.stringify(data)).platinum.stok %>
+                </td>
+                <td>
+                  <button class="btn btn-info btn-block" role="button" id="myBtn1">Beli</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Gold</td>
+                <td id="hargaGold">
+                  <%= JSON.parse(JSON.stringify(data)).gold.harga %>
+                </td>
+                <td>
+                  <%= JSON.parse(JSON.stringify(data)).gold.stok %>
+                </td>
+                <td>
+                  <button class="btn btn-info btn-block" role="button" id="myBtn2">Beli</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Silver</td>
+                <td id="hargaSilver">
+                  <%= JSON.parse(JSON.stringify(data)).silver.harga %>
+                </td>
+                <td>
+                  <%= JSON.parse(JSON.stringify(data)).silver.stok %>
+                </td>
+                <td>
+                  <button class="btn btn-info btn-block" role="button" id="myBtn3">Beli</button>
+                </td>
+              </tr>
+              <tr>
+                <td>Bronze</td>
+                <td id="hargaBronze">
+                  <%= JSON.parse(JSON.stringify(data)).bronze.harga %>
+                </td>
+                <td>
+                  <%= JSON.parse(JSON.stringify(data)).bronze.stok %>
+                </td>
+                <td>
+                  <button class="btn btn-info btn-block" role="button" id="myBtn4">Beli</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <a href="../jadwalkonser" class="btn btn-warning" role="button">Kembali</a>
+      </div>
+
+
+
+
+      <div class="col-sm-2 sidenav">
+        <div class="well">
+          <p>ADS</p>
+        </div>
+        <div class="well">
+          <p>ADS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Platinum-->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4>Jumlah tiket yang dibeli :</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form" action="/inputP" method="POST">
+            <div class="form-group">
+              <label for="platinum">
+                <span class="glyphicon"></span>Platinum</label>
+              <br>
+              <input type="hidden" name="event_id" value="<%- location -%>" />
+              <input type="text" class="form-control" name="platinum" id="platinum" placeholder="Jumlah">
+              <label for="totalHargaP">
+                <span class="glyphicon"></span>Total Harga</label>
+              <br>
+              <input type="text" class="form-control" name="totalHargaP" id="totalHargaP" placeholder="0">
+            </div>
+            <button type="submit" class="btn btn-info">Lanjut ke pembayaran</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $("#myBtn1").click(function () {
+        $("#myModal1").modal();
+      });
+      $("#platinum").keyup(function () {
+        function calculatePrice() {
+          let total = $("#platinum").val() * parseInt($("#hargaPlatinum").text());
+          return total;
+          console.log($("#hargaPlatinum"));
+        }
+        $("#totalHargaP").val("Rp " + calculatePrice() + " ,-");
+      });
+    });
+  </script>
+
+  <!-- Modal Gold-->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4>Jumlah tiket yang dibeli :</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form" action="/inputG" method="POST">
+            <div class="form-group">
+              <label for="gold">
+                <span class="glyphicon"></span>Gold</label>
+                <input type="hidden" name="event_id" value="<%- location -%>" />
+              <input type="text" class="form-control" name="gold" id="gold" placeholder="Jumlah">
+              <label for="totalHargaG">
+                <span class="glyphicon"></span>Total Harga</label>
+              <br>
+              <input type="string" class="form-control" name="totalHargaG" id="totalHargaG" placeholder="0">
+            </div>
+            <button type="submit" class="btn btn-info">Lanjut ke pembayaran</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $("#myBtn2").click(function () {
+        $("#myModal2").modal();
+      });
+      $("#gold").keyup(function () {
+        function calculatePrice() {
+          let total = $("#gold").val() * parseInt($("#hargaGold").text());
+          return total;
+        }
+        $("#totalHargaG").val("Rp " + calculatePrice() + " ,-");
+      });
+    });
+  </script>
+
+  <!-- Modal Silver-->
+  <div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4>Jumlah tiket yang dibeli :</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form" action="/inputS" method="POST">
+            <div class="form-group">
+              <label for="silver">
+                <span class="glyphicon"></span>Silver</label>
+                <input type="hidden" name="event_id" value="<%- location -%>" />
+              <input type="text" class="form-control" name="silver" id="silver" placeholder="Jumlah">
+              <label for="totalHargaS">
+                <span class="glyphicon"></span>Total Harga</label>
+              <br>
+              <input type="string" class="form-control" name="totalHargaS" id="totalHargaS" placeholder="0">
+            </div>
+            <button type="submit" class="btn btn-info">Lanjut ke pembayaran</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $("#myBtn3").click(function () {
+        $("#myModal3").modal();
+      });
+      $("#silver").keyup(function () {
+        function calculatePrice() {
+          let total = $("#silver").val() * parseInt($("#hargaSilver").text());
+          return total;
+        }
+        $("#totalHargaS").val("Rp " + calculatePrice() + " ,-");
+      });
+    });
+  </script>
+
+  <!-- Modal Bronze-->
+  <div class="modal fade" id="myModal4" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4>Jumlah tiket yang dibeli :</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form" action="/inputB" method="POST">
+            <div class="form-group">
+              <label for="bronze">
+                <span class="glyphicon"></span>Bronze</label>
+                <input type="hidden" name="event_id" value="<%- location -%>" />
+              <input type="text" class="form-control" name="bronze" id="bronze" placeholder="Jumlah">
+              <label for="totalHargaB">
+                <span class="glyphicon"></span>Total Harga</label>
+              <br>
+              <input type="string" class="form-control" name="totalHargaB" id="totalHargaB" placeholder="0">
+            </div>
+            <button type="submit" class="btn btn-info">Lanjut ke pembayaran</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $("#myBtn4").click(function () {
+        $("#myModal4").modal();
+      });
+      $("#bronze").keyup(function () {
+        function calculatePrice() {
+          let total = $("#bronze").val() * parseInt($("#hargaBronze").text());
+          return total;
+        }
+        $("#totalHargaB").val("Rp " + calculatePrice() + " ,-");
+      });
+    });
+  </script>
+
+  <footer class="container-fluid text-center">
+    <p>Powered by TiketKonser.com</p>
+  </footer>
+</body>
+</html>

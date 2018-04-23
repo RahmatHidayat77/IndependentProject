@@ -73,7 +73,7 @@
           <li>
             <a href="./tentang">Tentang</a>
           </li>
-          <li class="active">
+          <li>
             <a href="./jadwalkonser">Jadwal Konser</a>
           </li>
           <li>
@@ -82,21 +82,12 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <% if (loginIn){ %>
-
-              <%} else {%>
-                <a href="./register">
-                  <span class="glyphicon glyphicon-user"></span> Register</a>
-                <%}%>
+            <a href="./register">
+              <span class="glyphicon glyphicon-user"></span> Register</a>
           </li>
-          <li>
-            <% if (loginIn) { %>
-              <a href="./logout">
-                <span class="glyphicon glyphicon-log-in"></span> Logout</a>
-              <% } else { %>
-                <a href="./login">
-                  <span class="glyphicon glyphicon-log-in"></span> Login</a>
-                <% } %>
+          <li class="active">
+            <a href="./login">
+              <span class="glyphicon glyphicon-log-in"></span> Login</a>
           </li>
         </ul>
       </div>
@@ -117,37 +108,10 @@
         </p>
       </div>
       <div class="col-sm-8 text-left">
-        <h1>Jadwal Konser</h1>
-        <!--h1>Login :</h1>
-        <h1>
-          <%=loginIn%>
-        </h1-->
+        <h1>Login</h1>
         <hr>
-        <div>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Tanggal</th>
-                <th>Nama Band / Penyanyi</th>
-                <th>Tempat</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-                <% data.forEach(function(element) { %>
-                  <tr>
-                    <td><%= element.tanggal %></td>
-                    <td><%= element.nama %></td>
-                    <td><%= element.tempat %></td>
-                    <th>
-                        <a href="<%- './pesan/' + element.id -%>" class="btn btn-info" role="button">Pesan Tiket</a>
-                    </th>
-                  </tr>
-                <% }) %>
-               
-            </tbody>
-          </table>
-        </div>
+        <h3>Email atau Password anda salah.</h3></br>
+        <a href="./login" class="btn btn-info" role="button">Kembali</a>
       </div>
       <div class="col-sm-2 sidenav">
         <div class="well">
@@ -163,6 +127,7 @@
   <footer class="container-fluid text-center">
     <p>Powered by TiketKonser.com</p>
   </footer>
+
 </body>
 
 </html>

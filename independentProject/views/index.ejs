@@ -20,7 +20,7 @@
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 
     .row.content {
-      height: 565px
+      height: 840px;
     }
 
     /* Set gray background color and 100% height */
@@ -82,11 +82,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-              <% if (loginIn){ %>
+            <% if (loginIn){ %>
 
-                <%} else {%>
-                  <a href="./register">
-                    <span class="glyphicon glyphicon-user"></span> Register</a>
+              <%} else {%>
+                <a href="./register">
+                  <span class="glyphicon glyphicon-user"></span> Register</a>
                 <%}%>
           </li>
           <li>
@@ -117,16 +117,70 @@
         </p>
       </div>
       <div class="col-sm-8 text-left">
-        <h1>Selamat Datang</h1>
+        <h1>Selamat Datang</h1><hr>
         <h4>
           <p align=justify>
-            &nbsp;&nbsp;&nbsp;&nbsp;TiketKonser.com, merupakan situs terpercaya untuk pemesanan tiket konser band atau penyanyi favorit anda.
-            Anda dapat memilih band atau penyanyi yang anda sukai. Disini anda dapat menemukan tiket dari harga termurah sampai harga
-            tertinggi. Anda juga dapat melakukan pembayaran melalui ATM. Sekarang membeli tiket konser jauh lebih mudah dan
-            tidak perlu antri.
+            &nbsp;&nbsp;&nbsp;&nbsp;TiketKonser.com, merupakan situs terpercaya untuk pemesanan tiket konser band atau penyanyi favorit
+            anda. Anda dapat memilih band atau penyanyi yang anda sukai. Disini anda dapat menemukan tiket dari harga termurah
+            sampai harga tertinggi. Anda juga dapat melakukan pembayaran melalui ATM. Sekarang membeli tiket konser jauh
+            lebih mudah dan tidak perlu antri.
           </p>
         </h4>
-        <img align=justify src="/images/tips-sukses-konser-musik.jpg" width="870" height="500"/>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="/images/konser.jpg" width="870" height="500" alt="Konser">
+              <div class="carousel-caption">
+                <h3>Live</h3>
+                <h4>Rasakan meriahnya konser langsung !</h4>
+              </div>
+            </div>
+
+            <div class="item">
+                <img src="/images/sheila.jpg" width="870" height="500" alt="Sheila">
+                <div class="carousel-caption">
+                  <h3>Performance</h3>
+                  <h4>Live performance dari band/penyanyi idola anda !</h4>
+                </div>
+              </div>
+
+            <div class="item">
+              <img src="/images/b.jpg" width="870" height="500" alt="images">
+              <div class="carousel-caption">
+                <h3>Moment</h3>
+                <h4>Rasakan momen yang tak akan terlupakan !</h4>
+              </div>
+            </div>
+
+            <div class="item">
+              <img src="/images/dewa.jpg" width="870" height="500" alt="dewa">
+              <div class="carousel-caption">
+                <h3>Meet</h3>
+                <h4>Bertemu langsung dengan idola anda !</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
         <hr>
         <a href='./jadwalkonser'>
           <h3>Tungu apalagi, pesan sekarang....</h3>

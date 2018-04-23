@@ -68,35 +68,16 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li>
-            <a href="./">Home</a>
-          </li>
-          <li>
-            <a href="./tentang">Tentang</a>
+            <a href="./adminInput">Admin Input</a>
           </li>
           <li class="active">
-            <a href="./jadwalkonser">Jadwal Konser</a>
-          </li>
-          <li>
-            <a href="./kontakadmin">Kontak Admin</a>
+            <a href="./jadwalkonserAdmin">Jadwal Konser</a>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <% if (loginIn){ %>
-
-              <%} else {%>
-                <a href="./register">
-                  <span class="glyphicon glyphicon-user"></span> Register</a>
-                <%}%>
-          </li>
-          <li>
-            <% if (loginIn) { %>
-              <a href="./logout">
+              <a href="./loginAdmin">
                 <span class="glyphicon glyphicon-log-in"></span> Logout</a>
-              <% } else { %>
-                <a href="./login">
-                  <span class="glyphicon glyphicon-log-in"></span> Login</a>
-                <% } %>
           </li>
         </ul>
       </div>
@@ -140,7 +121,7 @@
                     <td><%= element.nama %></td>
                     <td><%= element.tempat %></td>
                     <th>
-                        <a href="<%- './pesan/' + element.id -%>" class="btn btn-info" role="button">Pesan Tiket</a>
+                        <a href="<%- './hapusJadwal/' + element.id -%>" class="btn btn-danger" role="button">Hapus</a>
                     </th>
                   </tr>
                 <% }) %>
